@@ -15,7 +15,7 @@ int main()
     }
     printf("\nEnter The Total Number Of Resources To Allocate:\t");
     scanf("%d", &resource);
-    printf("\nEnter The Claim Vector:\t");
+    printf("\nEnter The Instance of Resource :\t");
     for (m = 0; m < resource; m++)
     {
         scanf("%d", &maximum_resources[m]);
@@ -28,7 +28,7 @@ int main()
             scanf("%d", &current[m][n]);
         }
     }
-    printf("\nEnter The Maximum Claim Table:\n");
+    printf("\nEnter The Maximum number of Instance Require Table:\n");
     for (m = 0; m < process; m++)
     {
         for (n = 0; n < resource; n++)
@@ -36,7 +36,7 @@ int main()
             scanf("%d", &maximum_claim[m][n]);
         }
     }
-    printf("\nThe Claim Vector \n");
+    printf("\nThe Instance of Resource \n");
     for (m = 0; m < resource; m++)
     {
         printf("\t%d ", maximum_resources[m]);
