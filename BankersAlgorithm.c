@@ -4,7 +4,7 @@ int main()
 {
     int count = 0, m, n, process, temp, resource;
     int allocation_table[5] = {0, 0, 0, 0, 0};
-    int available[5], current[5][5], maximum_claim[5][5];
+    int available[5], current[5][5], maximum_instance[5][5];
     int maximum_resources[5], running[5], safe_state = 0;
     printf("\nEnter The Total Number Of Processes:\t");
     scanf("%d", &process);
@@ -33,7 +33,7 @@ int main()
     {
         for (n = 0; n < resource; n++)
         {
-            scanf("%d", &maximum_claim[m][n]);
+            scanf("%d", &maximum_instance[m][n]);
         }
     }
     printf("\nThe Instance of Resource \n");
@@ -55,7 +55,7 @@ int main()
     {
         for (n = 0; n < resource; n++)
         {
-            printf("\t%d", maximum_claim[m][n]);
+            printf("\t%d", maximum_instance[m][n]);
         }
         printf("\n");
     }
@@ -91,7 +91,7 @@ int main()
                 temp = 1;
                 for (n = 0; n < resource; n++)
                 {
-                    if (maximum_claim[m][n] - current[m][n] > available[n])
+                    if (maximum_instance[m][n] - current[m][n] > available[n])
                     {
                         temp = 0;
                         break;
