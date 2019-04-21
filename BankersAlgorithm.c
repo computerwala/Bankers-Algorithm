@@ -1,7 +1,6 @@
-
 #include<stdio.h>
 #include<stdlib.h>
-#include<unistd.h>
+
 
 void print(int x[][10],int n,int m){
     int i,j;
@@ -14,6 +13,9 @@ void print(int x[][10],int n,int m){
 }
 
 //Resource Request algorithm
+//here we are taking some additional resources that is given in question
+//1. Request1: P0 requests 0 instances of A and 0 instances of B and 2 instances of C like this process will go in safe sate
+//2. Request2: P1 requests for 2 instances of A, 0 instances of B and 0 instances of C and this will show error encounter
 void res_request(int A[10][10],int N[10][10],int AV[10][10],int pid,int m)
 {
     int reqmat[1][10];
@@ -44,6 +46,7 @@ void res_request(int A[10][10],int N[10][10],int AV[10][10],int pid,int m)
 }
 
 //Safety algorithm
+//here it will check weather the process is in safe state or not by using safety algorithm
 int safety(int A[][10],int N[][10],int AV[1][10],int n,int m,int a[]){
 
     int i,j,k,x=0;
@@ -79,6 +82,13 @@ int safety(int A[][10],int N[][10],int AV[1][10],int n,int m,int a[]){
 
 
 //Banker's Algorithm
+//by using data structure algorithm this code was written
+//here it takes the input from the user
+//for example: in question it is given 3 process P0,P1 and P2 and 3 resources A,B and C after entering that value
+//it will assign that input in form of matrix and find need matrix by subtracting max- allocation and make its matrix
+//after that it will jump toward above code and use safety algorithm by checking work = allocation
+//and then comparing need <= Work after that if it false then work = work + allocation and it will check again if it is true then process will be in safe sate
+//it will print process according to sequence and print process is in safe sate or it is having deadlock condition or not
 void accept(int A[][10],int N[][10],int M[10][10],int W[1][10],int *n,int *m){
     int i,j;
     printf("\n Enter total no. of processes : ");
@@ -128,7 +138,10 @@ int banker(int A[][10],int N[][10],int W[1][10],int n,int m){
     }
 }
 
-
+//it is the main function of program
+//after checking all the process it will ask user if they want to add any additional resources
+//if user says yes then program will jump to above code where it will take additional resources and check process is in safe state or not
+//after completing all the process the program will exit
 int main(){
     int ret;
     int A[10][10];
@@ -154,4 +167,3 @@ int main(){
         exit(0);
     return 0;
 }
-
