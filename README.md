@@ -1,13 +1,16 @@
 # Bankers-Algorithm
+
 The Banker's algorithm is a resource allocation & deadlock avoidance algorithm developed by Edsger Dijkstra that tests for safety by simulating the allocation of pre-determined maximum possible amounts of all resources, and then makes a "safe-state" check to test for possible deadlock conditions for all other pending activities, before deciding whether allocation should be allowed to continue. The algorithm was developed in the design process for the operating system and originally described (in Dutch) in EWD108. The name is by analogy with the way that bankers account for liquidity constraints. 
 Algorithm The Banker's algorithm is run by the operating system whenever a process requests resources. The algorithm prevents deadlock by denying or postponing the request if it determines that accepting the request could put the system in an unsafe state (one where deadlock could occur). When a new process enters a system, it must declare the maximum number of instances of each resource type that may not exceed the total number of resources in the system.
 Let us assume that there are n processes and m resource types. Some data structures that are used to implement the banker's algorithm 
 
 ##Safe and Unsafe States
+
  A state (as in the above example) is considered safe if it is possible for all processes to finish executing (terminate). Since the system cannot know when a process will terminate, or how many resources it will have requested by then, the system assumes that all processes will eventually attempt to acquire their stated maximum resources and terminate soon afterward. This is a reasonable assumption in most cases since the system is not particularly concerned with how long each process runs (at least not from a deadlock avoidance perspective). Also, if a process terminates without acquiring its maximum resources, it only makes it easier on the system. Given that assumption, the algorithm determines if a state is safe by trying to find a hypothetical set of requests by the processes that would allow each to acquire its maximum resources and then terminate (returning its resources to the system). Any state where no such set exists is an unsafe state.
 
 
-#Given Problem:
+##Given Problem:
+
 Reena’s operating system uses an algorithm for deadlock avoidance to manage the allocation
 of resources say three namely A, B, and C to three processes P0, P1, and P2. Consider the
 following scenario as reference .user must enter the current state of system as given in this
@@ -26,6 +29,7 @@ following independent requests for additional resources in the current state:
 ## Note: The request must be given by user as input.
 
 ##Banker’s Algorithm:
+
 Define quantities:
 ```
 •	AVAILABLE : array [1 .. m] of integer; -- it specifies for each resource how many copies of it are available
@@ -79,7 +83,8 @@ and the following notation
 
 The time complexity of the Banker's algorithm as a function of the number n of processes and m of resources is o(n*n*m).
 
-#Banker’s (Safety) Algorithm:
+##Banker’s (Safety) Algorithm:
+
  find a safe sequence:
 i.e. is the system in a safe state?
 ```
